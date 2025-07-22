@@ -1,0 +1,29 @@
+num1 = input("Enter number 1: ")
+num2 = input("Enter number 2: ")
+action = input("Enter the action number (1.add 2.subtract 3.mul 4.div): ")
+
+try:
+    if num1.isnumeric() and num2.isnumeric():
+       
+        if action == '1':
+            result = num1 + num2
+        elif action == '2':
+            result = num1 - num2
+        elif action == '3':
+            result = num1 * num2
+        elif action == '4':
+            if num2 == 0:
+                raise ValueError("Division by zero is not allowed.")
+            result = num1 / num2
+        else:
+            raise ValueError("Invalid action selected.")
+        
+        print("Result:", result)
+    else:
+        raise ValueError("Inputs must be integers.")
+except ValueError as e:
+    print("Error:", e)
+    
+     
+
+    
