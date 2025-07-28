@@ -1,6 +1,6 @@
 import mysql.connector
 
-def updatedata(id,name):
+def insertData(id,name,email,password):
     mydb=mysql.connector.connect(
         host="localhost",
         user="root",
@@ -8,14 +8,15 @@ def updatedata(id,name):
         database="shreesha_cse"
     )
     mycursor=mydb.cursor()
-    sql="UPDATE user set name=%s where id=%s"
-    val=(name,id)
+    sql="INSERT INTO user(id,name,email,password) VALUES (%s,%s,%s,%s)"
+    val=(id,name,email,password)
     mycursor.execute(sql,val)
     mydb.commit()
     mycursor.close()
     mydb.close()
-    print(mycursor.rowcount,"record updated")
+    print(mycursor.rowcount,"record inserted")
+
 id=input("enter id :")
 name=input("enter name:")
-updatedata(id,name)
-
+email=input("enter email:")
+password=input("enter password:")

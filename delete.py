@@ -1,6 +1,6 @@
 import mysql.connector
 
-def updatedata(id,name):
+def deletedata(id):
     mydb=mysql.connector.connect(
         host="localhost",
         user="root",
@@ -8,14 +8,11 @@ def updatedata(id,name):
         database="shreesha_cse"
     )
     mycursor=mydb.cursor()
-    sql="UPDATE user set name=%s where id=%s"
-    val=(name,id)
+    sql="DELETE from  user where id=%s"
+    val=(id,)
     mycursor.execute(sql,val)
     mydb.commit()
     mycursor.close()
     mydb.close()
-    print(mycursor.rowcount,"record updated")
+    print(mycursor.rowcount,"record deleted")
 id=input("enter id :")
-name=input("enter name:")
-updatedata(id,name)
-
